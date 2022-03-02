@@ -32,13 +32,19 @@ const Wrapper = styled.div`
   grid-template-columns: 53px auto;
   align-items: center;
   gap: 20px;
-  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  *,   //means property will apply to all elements inside wrapper while & is for the wrapper itslef 
+  & {
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
   :hover {
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1),
       0px 30px 60px rgba(23, 0, 102, 0.5),
       inset 0px 0px 0px 0.5px rgba(255, 255, 255, 0.5);
     transform: translateY(-3px) scale(1.2) rotate(10deg) skewX(10deg);
   }
+  //.icon { this is how we can refer a class named icon jis element ko bhi ye class icon dainge uske hover pay transform: scale(1.2) apply hogi
+  //transform: scale(1.2);
+  //}
 `
 const TextWrapper = styled.div`
   display: grid;
@@ -59,6 +65,10 @@ const Ring = styled.img`
   position: absolute;
   top: -15px;
   left: -16px;
+  ${Wrapper}:hover & {
+    //it is neccessary that warapper should be declared above
+    transform: rotate(30deg) scale(1.2) translate(1px, 1px);
+  }
 `
 const IconWrapper = styled.div`
   width: 45px;
@@ -69,4 +79,8 @@ const IconWrapper = styled.div`
   justify-content: center;
   align-content: center;
   position: relative;
+  ${Wrapper}:hover & {
+    // means k wrapper k hover p wrapper aur icon wrapper k sath ye krdo
+    filter: hue-rotate(10deg) brightness(150%) saturate(120%);
+  }
 `
