@@ -13,6 +13,17 @@ export default function MockupAnimation() {
 }
 const Wrapper = styled.div`
   position: relative;
+  perspective: 5000; // it is related to transform the 3d one below and it should be included in parent lower the number the sharper u will see the angle
+  div {
+    transform: rotateY(-20deg) rotateX(20deg); // this is for 3d
+    transform-origin: bottom left; // kahan sa kis point sa transform karega
+  }
+  * {
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  :hover div {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
 
   .mockup1 {
     position: absolute;
